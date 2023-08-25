@@ -8,6 +8,13 @@
     scroll-behavior: smooth;
 }
 
+:root {
+    --darkwhite-color: #ddd;
+    --head-color: rgb(255 141 81);
+    --back-color: #292929;
+    --darkred-color:rgb(168, 2, 2);
+}
+
 body {
     background-image: url("../Imgs/photo_2023-08-21_03-47-02.jpg");
     background-repeat: no-repeat;
@@ -25,8 +32,7 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 5px;
-    background-color: aqua;
-    background-color: rgb(204, 160, 63);
+    background-color: var(--head-color);
     position: fixed;
     bottom: 30px;
     right: 20px;
@@ -34,6 +40,20 @@ button {
     display: none;
     z-index: 99;
     opacity: .7;
+}
+
+button i {
+    animation: to-top 1s infinite linear alternate;
+    font-size: 18px;
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
 }
 
 header {
@@ -64,21 +84,21 @@ header .container {
 }
 
 .head a {
-    color: #ddd;
+    color: var(--darkwhite-color);
     transition: .3s;
 }
 
-.head ul a:hover {
-    color: rgb(168, 2, 2);
+header .head ul a:hover {
+    color: var(--head-color) !important;
 }
 
 .head h1 {
-    font-size: 30px;
+    font-size: 25px;
     text-shadow: 0px 0px 12px #000531;
 }
 
 .head h1 a {
-    color: rgb(49, 227, 221);
+    color: var(--head-color);
 }
 
 @media (max-width: 900px) {
@@ -94,103 +114,83 @@ header .container {
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 470px) {
+    header {
+        padding: 2px;
+    }
     .head ul li {
-        font-size: 13px;
-        margin-right: 5px;
+        font-size: 12px;
+        margin-right: 3px;
+    }
+    .head ul li:last-child {
+        margin-right: 0;
     }
     .head h1 {
-        font-size: 18px;
+        font-size: 16px;
         margin-top: 10px;
     }
 }
 
-
-.show {
-    color: rgb(168, 2, 2) !important;
-}
 /* header done */
 .landing {
-    min-height: 100vh;
+    min-height: 120vh;
     padding: 0 20px;
     padding-top: 80px;
+    background-image: url("../Imgs/desktop.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .landing .home {
-    display: flex;
-    max-width: 100%;
-    position: relative;
+    margin-top: 25vh;
 }
 
-.landing .home img {
-    max-width: 100%;
+.landing .home h3:first-child {
+    color: var(--darkwhite-color);
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
-.landing .home .title {
-    max-width: 100%;
-    position: absolute;
-    top: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.landing .home h3 span {
+    color: var(--head-color);
+    font-size: 35px;
+    text-shadow: 0 0 12px var(--back-color);
 }
 
-.landing .title h3 {
-    max-width: 25%;
-    color: #ddd;
-    font-size: 20px;
-    text-shadow: 0px 0px 12px #17d2a4;
+.landing .home h1 {
+    font-size: 43px;
+    color: var(--head-color);
+    margin-bottom: 20px;
 }
 
-.landing .title h3:nth-of-type(2) {
-    text-decoration: underline;
-    line-height: 1.6;
+.landing .home h1 p {
+    font-size: 25px;
+    color: var(--darkwhite-color);
+    font-weight: 500;
+    margin-top: 20px;
 } 
 
-.landing .title h1 {
-    max-width: 45%;
-    font-size: 80px;
-    color: #ddd;
-    text-shadow: 0px 0px 12px #17d2a4;
-
-}
-
-.landing .title h1 p {
-    font-size: 20px;
-    margin-top: 20px;
-    text-shadow: 0px 0px 12px #17d2a4;
-}
-
-@media (max-width: 900px) {
-    .landing .home .title {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+@media (max-width: 450px) {
+    .landing {
+        background-image: url("../Imgs/mobile1.jpg");
+        background-position: center left;
     }
-    .landing .title h1 {
-        font-size: 40px;
-        max-width: 70%;
-        margin: 10px 0;
-    }
-    .landing .title h1 p {
-        margin-top: 5px;
-        font-size: 17px;
-    }
-    .landing .title h3 {
-        max-width: 50%;
+    .landing .home {
+        margin-top: 55vh;
     }
 }
 /* landing done */
 .Training {
     padding: 60px 20px;
-    background-color: #292929;
+    background-color: var(--back-color);
 }
 
 .h-section {
     margin: 0px auto 30px;
     width: fit-content;
     font-size: 35px;
-    color: rgb(204 160 63);
+    color: var(--head-color);
     padding: 10px;
     text-transform: uppercase;
 }
@@ -206,13 +206,13 @@ header .container {
 }
 
 .Training .plans .plan {
-    min-width: 320px;
+    min-width: 270px;
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: space-between;
     padding: 30px 20px;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid var(--darkwhite-color);
     text-align: center;
     transition: .4s;
     flex: 1;
@@ -223,133 +223,120 @@ header .container {
 }
 
 .Training .plan h3 {
-    color: #ddd;
-    text-shadow: 0px 0px 12px #17d2a4;
+    color: var(--darkwhite-color);
     margin-bottom: 25px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .Training .plan i {
-    color: rgb(204, 160, 63);
     color: #b1c4bf95;
+    color: var(--head-color);
     margin-bottom: 25px;
     font-size: 35px;
 }
 
 .Training .plan h1 {
-    color: rgb(204 160 63);
-    text-shadow: 0px 0px 12px #b1c4bf95;   
+    color: #b1c4bf95;
     margin-bottom: 25px;
-    font-size: 25px;
+    font-size: 23px;
 }
 
 .Training .plan p {
-    color: #ddd;
-    text-shadow: 0px 0px 12px #b1c4bf95;   
+    color: var(--darkwhite-color);  
     margin-bottom: 25px;
     font-size: 16px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .Training .plan a {
-    color: rgb(204 160 63);
+    color: var(--head-color);
     padding: 15px;
     background-color: #dddddd56;
     border-radius: 20px;
     font-size: 16px;
     text-transform: uppercase;
+    font-weight: 600;
     transition: .4s;
 }
 
 .Training .plans .plan:hover a {
-    background-color:rgb(204 160 63);
+    background-color: var(--head-color);
     color: black;
     font-weight: bold;
 }
 /* training done */
 .about {
-    padding: 60px 20px 10px;
-    min-height: 100vh;
+    padding: 60px 20px 0px;
 }
 
 .about .h-section {
-    color: #ddd;
+    color: var(--darkwhite-color);
 }
 
 .about .collection {
-    text-align: center;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .about img {
-    max-width: 80%;
+    max-width: 50%;
+    flex: 1;
 }
 
 .about .details {
-    position: absolute;
-    top: 40%;
-    left: 17%;
     text-align: center;
+    min-width: 30%;
+    padding-bottom: 10px;
+    flex: 1;
 }
 
 .about .details h1 {
-    color: black;
-    text-shadow: 0px 0px 12px #17d2a4;
+    color: var(--darkred-color);
     font-size: 35px;
     text-transform: uppercase;
     margin-bottom: 30px;
 }
 
 .about .details h3 {
-    color: #ddd;
-    text-shadow: 0px 0px 12px #17d2a4;
-    font-size: 25px;
-    text-transform: uppercase;
+    color: var(--darkwhite-color);
+    font-size: 22px;
+    text-transform: capitalize;
     margin-bottom: 30px;
 }
 
 .about .details p {
-    color: #ddd;
-    max-width: 400px;
-    margin: 0 auto;
-    text-shadow: 0px 0px 12px #17d2a4;
-    text-transform: uppercase;
+    color: var(--darkwhite-color);
+    text-transform: capitalize;
     line-height: 1.5;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
+    .about .collection {
+        flex-direction: column;
+    }
+
+    .about img {
+        max-width: 80%;
+    }
+}
+
+@media (max-width:500px) {
     .about img {
         max-width: 100%;
-    }
-    .about .details {
-        left: 10%;
-    }
-    .about .details h1 {
-        font-size: 28px;
-    }
-    .about .details h3 {
-        font-size: 20px;
-    }
-    .about .details p {
-        font-size: 14px;
     }
 }
 /* about me done */
 .testimonials {
     padding: 60px 20px;
-    background-color: #292929;
+    background-color: var(--back-color);
 }
-
-/* .testimonials .clients {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-} */
 
 .testimonials .clients .client {
     padding: 20px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--darkwhite-color);
     margin-bottom: 10px;
     transition: .4s;
 }
@@ -358,7 +345,7 @@ header .container {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    color: #ddd;
+    color: var(--darkwhite-color);
 }
 
 .testimonials .client .name img {
@@ -369,12 +356,12 @@ header .container {
 }
 
 .testimonials .client .stars i {
-    color: rgb(204, 160, 63);
+    color: var(--head-color);
     margin-bottom: 10px;
 }
 
 .testimonials .client p {
-    color: #ddd;
+    color: var(--darkwhite-color);
 }
 
 .testimonials .client:hover {
@@ -383,7 +370,7 @@ header .container {
 }
 /* testimonials done */
 .result .h-section {
-    color: #ddd;
+    color: var(--darkwhite-color);
 }
 
 .result .h-section:nth-of-type(1) {
@@ -398,11 +385,17 @@ header .container {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
     gap: 15px;
+    overflow: hidden;
 }   
 
 .result .results img {
     width: 100%;
     cursor: pointer;
+    transition: .3s;
+}
+
+.result .results img:hover{
+    transform: scale(1.04);
 }
 
 /* result done */
@@ -411,7 +404,7 @@ header .container {
 }
 
 .contact .h-section {
-    color: #ddd;
+    color: var(--darkwhite-color);
 }
 
 .contact .h-section:nth-child(1) {
@@ -439,7 +432,8 @@ header .container {
     border: none;
     outline: none;
     font-weight: bold;
-    box-shadow: 0px 0px 12px rgb(204, 160, 63);
+    box-shadow: 0px 0px 12px var(--head-color);
+    background-color: var(--darkwhite-color);
 }
 
 .contact .details textarea {
@@ -451,7 +445,7 @@ header .container {
     width: fit-content;
     padding: 0 20px;
     border-radius: 20px;
-    background-color: rgb(204, 160, 63);
+    background-color: var(--head-color);
     color: black;
     cursor: pointer;
 }
@@ -465,12 +459,12 @@ header .container {
 
 .contact .details i {
     font-size: 30px;
-    color: rgb(204, 160, 63);
+    color: var(--head-color);
     transition: .4s;
 }
 
 .contact .details i:hover {
-    color: darkred;
+    color: var(--darkwhite-color);
 }
 /* contact done */
 .show-img {
@@ -484,26 +478,41 @@ header .container {
     display: none
 }
 
-.show-img img {
+.show-img .img {
     width: 500px;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    border-radius: 20px;
+    border: 5px solid var(--darkwhite-color);
+}
+
+.show-img .img img {
+    max-width: 100%;
+    border-radius: 20px;
 }
 
 .show-img i {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #ddd;
+    top: -9px;
+    right: -15px;
+    color: var(--darkwhite-color);
+    background-color: black;
+    border-radius: 50%;
     font-size: 30px;
     cursor: pointer;
 }
 
 @media (max-width:800px) {
-    .show-img img {
+    .show-img .img {
         width: 60%;
+    }
+}
+
+@media (max-width:450px) {
+    .show-img .img {
+        width: 80%;
     }
 }
 
@@ -522,13 +531,18 @@ header .container {
 }
 
 .loading span {
-    color: #17d2a4;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 7px dotted var(--head-color);
+    border-top-color: transparent;
     font-size: 35px;
-    animation: loader .7s linear infinite alternate;
+    animation: loader 2.5s linear infinite;
 }
 
 @keyframes loader {
     100% {
-        opacity: 0.2;
+        transform: rotate(360deg);
+        opacity: .1;
     }
 }
