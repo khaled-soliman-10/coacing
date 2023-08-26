@@ -8,7 +8,8 @@ let contact = document.getElementById("contact");
 let links = document.querySelectorAll("header ul li a");
 
 let header = document.querySelector("header");
-let button = document.querySelector("button");
+let button = document.querySelector(".button");
+let aside = document.querySelector("aside");
 
 if (window.scrollY >= home.offsetTop) {
     links[0].style.color="var(--head-color)";
@@ -23,6 +24,14 @@ window.onscroll = function () {
     }else {
         header.style.backgroundColor = "transparent"
         header.style.boxShadow = "none"
+    }
+
+    if (window.scrollY >=100) {
+        aside.style.backgroundColor = "rgb(41,41,41,.9)"
+        aside.style.boxShadow = "0 0 5px 0 white"
+    }else {
+        aside.style.backgroundColor = "transparent"
+        aside.style.boxShadow = "none"
     }
 
     if (window.scrollY>=500) {
@@ -81,8 +90,6 @@ button.onclick = function () {
     })
 }
 
-button.oncl
-
 let divShow = document.querySelector(".show-img");
 let divImg = document.querySelector(".show-img img");
 let exit = document.querySelector(".show-img i");
@@ -109,3 +116,21 @@ setTimeout(() => {
     loader.style.display = "none"
 },2700)
 
+let buttonTwo = document.querySelector("aside .mobile-head button");
+let list = document.querySelector("aside .mobile-head .view-list ul");
+let a = document.querySelectorAll("aside .mobile-head ul a")
+buttonTwo.onclick = () => {
+    list.classList.toggle("show")
+}
+
+a.forEach(aa => {
+    aa.onclick = ()=> {
+        list.classList.remove("show")
+    }
+})
+
+document.onclick= (e) => {
+    if (!buttonTwo.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove("show");            
+    }
+}

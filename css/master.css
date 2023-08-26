@@ -28,7 +28,7 @@ body {
     margin: auto;
 }
 
-button {
+.button {
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -42,7 +42,7 @@ button {
     opacity: .7;
 }
 
-button i {
+.button i {
     animation: to-top 1s infinite linear alternate;
     font-size: 18px;
 }
@@ -54,6 +54,10 @@ button i {
     100% {
         transform: translateY(-5px);
     }
+}
+
+.show {
+    display: block !important;
 }
 
 header {
@@ -116,7 +120,7 @@ header .head ul a:hover {
 
 @media (max-width: 470px) {
     header {
-        padding: 2px;
+        padding: 10px 2px;
     }
     .head ul li {
         font-size: 12px;
@@ -229,7 +233,6 @@ header .head ul a:hover {
 }
 
 .Training .plan i {
-    color: #b1c4bf95;
     color: var(--head-color);
     margin-bottom: 25px;
     font-size: 35px;
@@ -544,5 +547,109 @@ header .head ul a:hover {
     100% {
         transform: rotate(360deg);
         opacity: .1;
+    }
+}
+/* for mobile header */
+aside {
+    height: 60px;
+    width: 100%;
+    padding: 10px 20px;
+    position: fixed;
+    z-index: 99;
+    background-color: transparent;
+    display: none;
+}
+
+aside .container {
+    height: 100%;
+}
+
+aside .mobile-head {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-head h1 {
+    font-size: 25px;
+    text-shadow: 0px 0px 12px #000531;
+}
+
+.mobile-head h1 a {
+    color: var(--head-color);
+}
+
+.mobile-head .view-list {
+    position: relative;
+}
+
+.mobile-head button {
+    width: 30px;
+    height: 30px;
+    background-color: var(--head-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mobile-head ul {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 0;
+    background-color: rgb(105, 105, 105);
+    padding: 10px;
+    width: 200px;
+    display: none;
+}
+
+.mobile-head ul li {
+    display: inline-block;   
+    padding: 10px;
+    width: 100%;    
+    transition: .3s;
+}
+
+.mobile-head .view-list ul li:hover {
+    padding-left: 20px;
+}
+
+.mobile-head ul li:not(:last-child) {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--darkwhite-color);
+}
+
+.mobile-head ul a {
+    color: var(--head-color);
+    font-size: 20px;
+}
+
+.mobile-head ul::before {
+    content: "";
+    border: 15px solid;
+    border-color: transparent transparent rgb(105, 105, 105) transparent;
+    position: absolute;
+    bottom:calc(100% + 2px);
+    left: 0;
+    width: 0px;
+    height: 0px;
+}
+
+@media (max-width:700px) {
+    header {
+        display: none;
+    }
+    aside {
+        display: block;
+    }
+}
+
+@media (max-width:400px) {
+    .mobile-head h1 {
+        font-size: 18px;
+    }
+    .mobile-head button {
+        margin-right: 10px;
     }
 }
